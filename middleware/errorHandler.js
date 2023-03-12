@@ -3,7 +3,7 @@ const errorHandler = (err, req, res, next) => {
   const statusCode = res.statusCode ? res.statusCode : 500;
   console.log(constants.NOT_FOUND);
   switch (statusCode) {
-    case constants.NOT_FOUND:
+    case constants.BAD_REQUST:
       res.json({
         title: "Validation Failed",
         statusCode,
@@ -14,6 +14,14 @@ const errorHandler = (err, req, res, next) => {
     case constants.UN_AUTHORIZED:
       res.json({
         title: "Unauhorized Error",
+        statusCode,
+        message: err.message,
+        stackTrace: err.stack,
+      });
+      break;
+    case constants.NOT_FOUND:
+      res.json({
+        title: "404 Not Found",
         statusCode,
         message: err.message,
         stackTrace: err.stack,

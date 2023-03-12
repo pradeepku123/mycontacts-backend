@@ -1,4 +1,5 @@
 module.exports.constants = {
-  NOT_FOUND: 400,
+  BAD_REQUST: 400,
   UN_AUTHORIZED: 401,
+  NOT_FOUND: 404,
 };
