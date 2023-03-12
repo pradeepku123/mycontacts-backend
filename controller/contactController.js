@@ -9,6 +9,12 @@ const getAllContacts = (req, res) => {
 //@route POST /api/contacts/:id
 //@access public
 const createContacts = (req, res) => {
+  console.log(`Request Body:`, req.body);
+  const { name, email } = req.body;
+  if (!name || !email) {
+    res.status(400);
+    throw new Error("All Fileds are Mandatory");
+  }
   res.status(201).json({ message: "Create contact new contact" });
 };
 
